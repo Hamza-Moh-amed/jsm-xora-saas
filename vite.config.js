@@ -1,7 +1,16 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
-// https://vite.dev/config/
+import Checker from "vite-plugin-checker";
+
 export default defineConfig({
-  plugins: [react()],
-})
+  plugins: [
+    [react()],
+    Checker({
+      typescript: false, // Disable TypeScript checker
+      eslint: {
+        lintCommand: "eslint .", // Disable or ignore lint errors
+      },
+    }),
+  ],
+});
